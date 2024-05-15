@@ -58,10 +58,10 @@ where ic.area_complejo>50;
 
 -- 6. Consulta de Eventos con Número de Participantes Mayor que la Media.
 
-select e.nombre
-from eventos e
-group by nombre
-having avg(num_participantes);
+select nombre
+from eventos
+where num_participantes > 51.3
+ ;
 
 
 
@@ -76,7 +76,15 @@ from eventos e inner join evento_equipo eq
 on e.id_evento =eq.id_evento
 where e.nombre= "Torneo de Voleibol");
 -- 8. Consulta de Eventos Celebrados en Complejos Deportivos con Jefe de Organización Específico.
+
+
 -- 9. Consulta de Complejos Polideportivos sin Eventos Celebrados.
+
+select cp.nombre
+from complejo_polideportivo cp left join evento_complejo_poli ecp
+on cp.id_complejo_polideportivo =ecp.id_complejo
+where ecp.id_complejo is null;
+
 -- 10. Consulta de Comisarios que Actúan como Jueces en Todos los Eventos.
 
 
